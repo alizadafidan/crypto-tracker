@@ -157,6 +157,8 @@ const CryptoTracker: React.FC = () => {
   );
 
   const options: any = {
+    responsive: true,
+    maintainAspectRatio: false,
     scales: {
       x: {
         type: "time",
@@ -228,7 +230,7 @@ const CryptoTracker: React.FC = () => {
         </p>
         <Button
           onClick={handleRefresh}
-          type="primary"
+          type="default"
           style={{ marginTop: "10px", marginBottom: "50px" }}
         >
           Refresh Now

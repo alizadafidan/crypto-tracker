@@ -45,3 +45,20 @@ body {
   border-radius: 12px;
   margin-bottom: 50px;
 }
+
+@media (max-width: 1280px) {
+  .heading-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .filters-container {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 800px) {
+  .filters-container {
+    flex-direction: column;
+    align-items: start;
+  }
+}
