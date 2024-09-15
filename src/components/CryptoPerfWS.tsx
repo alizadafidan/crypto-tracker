@@ -175,7 +175,6 @@ const BinanceWebSocketTable: React.FC = () => {
       ws.onopen = () => {
         console.log("WebSocket connection opened");
       };
-
       ws.onmessage = (event) => {
         const data = JSON.parse(event.data);
         const tradeData = data.data;
@@ -190,7 +189,7 @@ const BinanceWebSocketTable: React.FC = () => {
           key: tradeData.t,
           symbol: tradeData.s,
           price: convertedPrice,
-          icon: iconUrls[symbolKey.slice(0, -4)] || "ada"
+          icon: iconUrls[symbolKey.slice(0, -4)] || iconUrls["ada"]
         };
 
         setCryptoData((prevData) => {
@@ -246,7 +245,7 @@ const BinanceWebSocketTable: React.FC = () => {
               alt={text}
               style={{ width: 24, height: 24, marginRight: 8 }}
             />
-            {text.toUpperCase()}
+            {text.slice(0, -4)}
           </div>
         );
       }
@@ -286,12 +285,7 @@ const BinanceWebSocketTable: React.FC = () => {
           </div>
         </div>
       </div>
-      <Table
-        columns={columns}
-        dataSource={cryptoData}
-        pagination={{ pageSize: 10 }}
-        rowKey="key"
-      />
+      <Table columns={columns} dataSource={cryptoData} rowKey="key" />
     </div>
   );
 };

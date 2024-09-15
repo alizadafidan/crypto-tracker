@@ -183,7 +183,7 @@ const CryptoTracker: React.FC = () => {
       },
       y: {
         ticks: {
-          callback: (value: number) => `$${value.toLocaleString()}`,
+          callback: (value: number) => `${value.toLocaleString()}`,
           beginAtZero: false,
           maxTicksLimit: 6
         },

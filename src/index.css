@@ -59,6 +59,9 @@ body {
   .filters-container {
     margin-bottom: 30px;
   }
+  .performance-container {
+    gap: 30px;
+  }
 }
 
 @media (max-width: 800px) {
@@ -67,6 +70,9 @@ body {
     align-items: start;
   }
   .performance-container {
+    gap: 5px;
     flex-direction: column;
+    align-items: start;
+    margin-bottom: 40px;
   }
 }
