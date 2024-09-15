@@ -14,7 +14,7 @@ import {
   TimeScale
 } from "chart.js";
 import "chartjs-adapter-date-fns";
-import { Select, Spin, message } from "antd";
+import { Select, Spin, Button } from "antd";
 import "antd/dist/reset.css";
 
 ChartJS.register(
@@ -38,6 +38,8 @@ const CryptoTracker: React.FC = () => {
   const [currency, setCurrency] = useState<string>("usd");
   const [crypto, setCrypto] = useState<string>("bitcoin");
   const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+  const [countdown, setCountdown] = useState<number>(60);
 
   const timeOptions = [
     { label: "1 Day", value: "1" },
@@ -59,7 +61,7 @@ const CryptoTracker: React.FC = () => {
         );
         setCurrencies(currencyResponse.data);
       } catch (error) {
-        message.error("Error fetching options. Please try again later.");
+        setError("Error fetching options. Please try again later.");
         console.error("Error fetching options:", error);
       } finally {
         setLoading(false);
@@ -74,10 +76,10 @@ const CryptoTracker: React.FC = () => {
       try {
         const data = await fetchCryptoData(crypto, currency, timePeriod);
         setCryptoData(data.prices);
+        setError(null);
+        resetCountdown();
       } catch (error) {
-        message.error(
-          "Error fetching crypto data. Possible 429 (Too Many Request). Please wait for another minute"
-        );
+        setError("Error fetching crypto data. Please try again in 1 minute.");
         console.error("Error fetching crypto data:", error);
       }
     };
@@ -190,6 +192,26 @@ const CryptoTracker: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    if (countdown === 0) {
+      window.location.reload();
+    }
+    const intervalId = setInterval(() => {
+      setCountdown((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, [countdown]);
+
+  const resetCountdown = () => {
+    setCountdown(60);
+  };
+
+  const handleRefresh = () => {
+    window.location.reload();
+    resetCountdown();
+  };
+
   if (loading) {
     return (
       <div style={{ textAlign: "center", marginTop: "100px" }}>
@@ -198,8 +220,25 @@ const CryptoTracker: React.FC = () => {
     );
   }
 
+  if (error) {
+    return (
+      <div style={{ textAlign: "center", marginTop: "100px" }}>
+        <p>
+          {error} Refreshing in: {countdown} seconds
+        </p>
+        <Button
+          onClick={handleRefresh}
+          type="primary"
+          style={{ marginTop: "10px", marginBottom: "50px" }}
+        >
+          Refresh Now
+        </Button>
+      </div>
+    );
+  }
+
   return (
-    <div>
+    <div className="container">
       <div className="heading-container">
         <div className="heading-left-container">
           <h1 className="heading-title">Crypto Tracker</h1>

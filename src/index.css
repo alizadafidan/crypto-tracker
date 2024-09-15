@@ -1,5 +1,7 @@
 body {
   padding: 30px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background-color: #e9ecef;
 }
 .heading-container {
   display: flex;
@@ -14,6 +16,7 @@ body {
 .filters-container {
   display: flex;
   gap: 20px;
+  align-items: center;
 }
 
 .heading-title {
@@ -25,4 +28,20 @@ body {
 .heading-desc {
   font-size: 14px;
   font-weight: 400;
+}
+
+.performance-table {
+  margin-top: 200px;
+}
+
+.performance-title {
+  margin-bottom: 30px;
+}
+
+.container {
+  padding: 20px;
+  margin: 5px;
+  background-color: white;
+  border-radius: 12px;
+  margin-bottom: 50px;
 }
