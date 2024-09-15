@@ -1,0 +1,28 @@
+body {
+  padding: 30px;
+}
+.heading-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.heading-left-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.filters-container {
+  display: flex;
+  gap: 20px;
+}
+
+.heading-title {
+  color: rgb(19, 95, 19);
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.heading-desc {
+  font-size: 14px;
+  font-weight: 400;
+}
