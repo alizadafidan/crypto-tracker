@@ -161,11 +161,10 @@ const BinanceWebSocketTable: React.FC = () => {
   return (
     <div className="container">
       <div className="performance-container">
-        <h1 className="heading-title">Real-time Binance Trades</h1>
+        <h1 className="heading-title">Performance</h1>
         <div>
           {currencies.length > 0 && (
             <Fragment>
-              <span className="heading-desc">Select currency: </span>
               <Select
                 defaultValue={currency}
                 style={{ width: 120 }}
@@ -185,13 +184,13 @@ const BinanceWebSocketTable: React.FC = () => {
               "Please wait for a minute and try again to get currencies for filtering table. Meanwhile you can analyze the real-time data below."}
           </div>
         </div>
-        <Table
-          columns={columns}
-          dataSource={cryptoData}
-          pagination={{ pageSize: 10 }}
-          rowKey="key"
-        />
       </div>
+      <Table
+        columns={columns}
+        dataSource={cryptoData}
+        pagination={{ pageSize: 10 }}
+        rowKey="key"
+      />
     </div>
   );
 };

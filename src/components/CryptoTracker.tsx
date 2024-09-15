@@ -158,7 +158,7 @@ const CryptoTracker: React.FC = () => {
 
   const options: any = {
     responsive: true,
-    maintainAspectRatio: false,
+    // maintainAspectRatio: false,
     scales: {
       x: {
         type: "time",
@@ -243,7 +243,7 @@ const CryptoTracker: React.FC = () => {
     <div className="container">
       <div className="heading-container">
         <div className="heading-left-container">
-          <h1 className="heading-title">Crypto Tracker</h1>
+          <h1 className="heading-title">Overview</h1>
           <div className="heading-desc">
             Showcasing the {crypto.toUpperCase()} in {currency.toUpperCase()}{" "}
             this {timePeriod} days
@@ -251,7 +251,6 @@ const CryptoTracker: React.FC = () => {
         </div>
         <div className="filters-container">
           <div>
-            <label>Time Period: </label>
             <Select
               value={timePeriod}
               onChange={(value) => setTimePeriod(value as string)}
@@ -265,7 +264,6 @@ const CryptoTracker: React.FC = () => {
             </Select>
           </div>
           <div>
-            <label>Currency: </label>
             <Select
               value={currency}
               onChange={(value) => setCurrency(value as string)}
@@ -279,7 +277,6 @@ const CryptoTracker: React.FC = () => {
             </Select>
           </div>
           <div>
-            <label>Cryptocurrency: </label>
             <Select
               value={crypto}
               onChange={(value) => setCrypto(value as string)}
