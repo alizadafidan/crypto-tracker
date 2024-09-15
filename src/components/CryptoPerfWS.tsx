@@ -181,7 +181,6 @@ const BinanceWebSocketTable: React.FC = () => {
         const tradeData = data.data;
         const price = parseFloat(tradeData.p);
         const symbolKey = tradeData.s.toLowerCase();
-        console.log(symbolKey, "symbolkey");
         const convertedPrice =
           currency === "usd"
             ? price
@@ -240,7 +239,6 @@ const BinanceWebSocketTable: React.FC = () => {
       dataIndex: "symbol",
       key: "symbol",
       render: (text: string, record: CryptoData) => {
-        console.log(record, "Record");
         return (
           <div style={{ display: "flex", alignItems: "center" }}>
             <img

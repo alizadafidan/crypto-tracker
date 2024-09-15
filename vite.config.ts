@@ -1,9 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
 
-// vite.config.js
 export default {
   server: {
     proxy: {
